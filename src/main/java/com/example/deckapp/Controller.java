@@ -80,6 +80,66 @@ public class Controller {
     private Label label91;
 
     @FXML
+    private Label labelLastAddress1;
+
+    @FXML
+    private Label labelLastAddress10;
+
+    @FXML
+    private Label labelLastAddress2;
+
+    @FXML
+    private Label labelLastAddress3;
+
+    @FXML
+    private Label labelLastAddress4;
+
+    @FXML
+    private Label labelLastAddress5;
+
+    @FXML
+    private Label labelLastAddress6;
+
+    @FXML
+    private Label labelLastAddress7;
+
+    @FXML
+    private Label labelLastAddress8;
+
+    @FXML
+    private Label labelLastAddress9;
+
+    @FXML
+    private Label labelStartAddress1;
+
+    @FXML
+    private Label labelStartAddress10;
+
+    @FXML
+    private Label labelStartAddress2;
+
+    @FXML
+    private Label labelStartAddress3;
+
+    @FXML
+    private Label labelStartAddress4;
+
+    @FXML
+    private Label labelStartAddress5;
+
+    @FXML
+    private Label labelStartAddress6;
+
+    @FXML
+    private Label labelStartAddress7;
+
+    @FXML
+    private Label labelStartAddress8;
+
+    @FXML
+    private Label labelStartAddress9;
+
+    @FXML
     private Button removeFromFirstDeque;
 
     @FXML
@@ -92,30 +152,37 @@ public class Controller {
     private Button showingStack;
 
     @FXML
-    private Label indexNextLast;
-
-    @FXML
-    private Label indexNextStart;
-
-    @FXML
-    private Label indexNowLast;
-
-    @FXML
-    private Label indexNowStart;
-
-    @FXML
     void initialize(){
         SpecialDeque<String> specialDeque = new SpecialDeque<>();
         RandomGenerating randomGenerating = new RandomGenerating();
         ArrayList<Label> labels = new ArrayList<>();
         ArrayList<Label> labelsLast = new ArrayList<>();
         ArrayList<String> lastElements = new ArrayList<>();
-        ArrayList<Label> labelStart = new ArrayList<>();
-        ArrayList<Label> labelLast = new ArrayList<>();
-        labelStart.add(0, indexNowStart);
-        labelStart.add(1, indexNextStart);
-        labelLast.add(0, indexNowLast);
-        labelLast.add(1, indexNextLast);
+        ArrayList<Label> labelStartAddress = new ArrayList<>();
+        ArrayList<Label> labelLastAddress = new ArrayList<>();
+
+        labelStartAddress.add(0, labelStartAddress1);
+        labelStartAddress.add(1, labelStartAddress2);
+        labelStartAddress.add(2, labelStartAddress3);
+        labelStartAddress.add(3, labelStartAddress4);
+        labelStartAddress.add(4, labelStartAddress5);
+        labelStartAddress.add(5, labelStartAddress6);
+        labelStartAddress.add(6, labelStartAddress7);
+        labelStartAddress.add(7, labelStartAddress8);
+        labelStartAddress.add(8, labelStartAddress9);
+        labelStartAddress.add(9, labelStartAddress10);
+
+        labelLastAddress.add(0, labelLastAddress10);
+        labelLastAddress.add(1, labelLastAddress9);
+        labelLastAddress.add(2, labelLastAddress8);
+        labelLastAddress.add(3, labelLastAddress7);
+        labelLastAddress.add(4, labelLastAddress6);
+        labelLastAddress.add(5, labelLastAddress5);
+        labelLastAddress.add(6, labelLastAddress4);
+        labelLastAddress.add(7, labelLastAddress3);
+        labelLastAddress.add(8, labelLastAddress2);
+        labelLastAddress.add(9, labelLastAddress1);
+
         showingStack.setOnAction(actionEvent -> {
 
             for (int i = 0; i < 160; i++) {
@@ -147,21 +214,58 @@ public class Controller {
             for (int i = 0; i < 10; i++) {
 
                 labels.get(i).setText(specialDeque.getIndex(i));
-                if (i < 2){
-                    labelStart.get(i).setText(Integer.toHexString(Integer.parseInt(specialDeque.getIndex(i))));
-                }
             }
-            for (int i = specialDeque.size() - 1, j = 0; i >= specialDeque.size() - 10 ; i--, j++) {
+            for (int i = specialDeque.size() - 1, j = 0; i >= specialDeque.size() - 11 ; i--, j++) {
                 lastElements.add(j, specialDeque.getIndex(i));
             }
-            int ch = 0;
+
             for (int i = 0; i < 10; i++) {
                 labelsLast.get(i).setText(lastElements.get(i));
-                if (i < 2){
-                    labelLast.get(i).setText(Integer.toHexString(Integer.parseInt(lastElements.get(i))));
+            }
+            int ch = 0;
+            int chLast = 0;
+            for (int i = 0; i < 10; i++) {
+                if (i == 0){
+                    ch = i;
+                    chLast = i;
+                    labelStartAddress.get(i).setText("null; " + specialDeque.getIndex(ch).hashCode()
+                            + "; " + specialDeque.getIndex(ch+1).hashCode()
+                            + ";" );
+                }
+                else {
+                    ch = i;
+                    chLast = i;
+                    labelStartAddress.get(i).setText( specialDeque.getIndex(ch-1).hashCode() + "; "
+                            + specialDeque.getIndex(ch).hashCode()
+                            + "; " + specialDeque.getIndex(chLast+1).hashCode()
+                            + ";" );
+                }
+            }
+
+            for (int i = 0; i < 10; i++) {
+                if (i == 0){
+                    ch = i;
+                    chLast = i;
+                    labelLastAddress.get(i).setText(lastElements.get(ch + 1).hashCode()
+                            + "; " + lastElements.get(ch).hashCode() + "; null;");
+                }
+                else {
+                    ch = i;
+                    chLast = i;
+                    if (i == 9){
+                        labelLastAddress.get(i).setText(lastElements.get(ch + 1).hashCode()
+                                + "; " + lastElements.get(ch).hashCode() + "; " + lastElements.get(chLast - 1) + ";");
+                    }else{
+                        labelLastAddress.get(i).setText(lastElements.get(ch + 1).hashCode() + "; "
+                                + lastElements.get(ch).hashCode()
+                                + "; " + lastElements.get(chLast - 1).hashCode()
+                                + ";" );
+                    }
+
 
                 }
             }
+
         });
 
         addToFirstDeque.setOnAction(actionEvent -> {
@@ -169,16 +273,51 @@ public class Controller {
             addLabel.setText(specialDeque.peekFirst());
             for (int i = 0; i < 10; i++) {
                 labels.get(i).setText(specialDeque.getIndex(i));
-                if (i < 2){
-                    labelStart.get(i).setText(Integer.toHexString(Integer.parseInt(specialDeque.getIndex(i))));
-                }
             }
-            for (int i = specialDeque.size() - 1, j = 0; i >= specialDeque.size() - 10 ; i--, j++) {
+            for (int i = specialDeque.size() - 1, j = 0; i >= specialDeque.size() - 11 ; i--, j++) {
                 lastElements.add(j, specialDeque.getIndex(i));
             }
+            int ch = 0;
+            int chLast = 0;
             for (int i = 0; i < 10; i++) {
-                if (i < 2){
-                    labelLast.get(i).setText(Integer.toHexString(Integer.parseInt(lastElements.get(i))));
+                if (i == 0){
+                    ch = i;
+                    chLast = i;
+                    labelStartAddress.get(i).setText("null; " + specialDeque.getIndex(ch).hashCode()
+                            + "; " + specialDeque.getIndex(ch+1).hashCode()
+                            + ";" );
+                }
+                else {
+                    ch = i;
+                    chLast = i;
+                    labelStartAddress.get(i).setText( specialDeque.getIndex(ch-1).hashCode() + "; "
+                            + specialDeque.getIndex(ch).hashCode()
+                            + "; " + specialDeque.getIndex(chLast+1).hashCode()
+                            + ";" );
+                }
+            }
+
+            for (int i = 0; i < 10; i++) {
+                if (i == 0){
+                    ch = i;
+                    chLast = i;
+                    labelLastAddress.get(i).setText(lastElements.get(ch + 1).hashCode()
+                            + "; " + lastElements.get(ch).hashCode() + "; null;");
+                }
+                else {
+                    ch = i;
+                    chLast = i;
+                    if (i == 9){
+                        labelLastAddress.get(i).setText(lastElements.get(ch + 1).hashCode()
+                                + "; " + lastElements.get(ch).hashCode() + "; " + lastElements.get(chLast - 1) + ";");
+                    }else{
+                        labelLastAddress.get(i).setText(lastElements.get(ch + 1).hashCode() + "; "
+                                + lastElements.get(ch).hashCode()
+                                + "; " + lastElements.get(chLast - 1).hashCode()
+                                + ";" );
+                    }
+
+
                 }
             }
         });
@@ -188,18 +327,55 @@ public class Controller {
             addLabel.setText(specialDeque.peekLast());
             for (int i = 0; i < 10; i++) {
                 labels.get(i).setText(specialDeque.getIndex(i));
-                if (i < 2){
-                    labelStart.get(i).setText(Integer.toHexString(Integer.parseInt(specialDeque.getIndex(i))));
-                }
 
             }
-            for (int i = specialDeque.size() - 1, j = 0; i >= specialDeque.size() - 10 ; i--, j++) {
+            for (int i = specialDeque.size() - 1, j = 0; i >= specialDeque.size() - 11 ; i--, j++) {
                 lastElements.add(j, specialDeque.getIndex(i));
             }
             for (int i = 0; i < 10; i++) {
                 labelsLast.get(i).setText(lastElements.get(i));
-                if (i < 2){
-                    labelLast.get(i).setText(Integer.toHexString(Integer.parseInt(lastElements.get(i))));
+            }
+            int ch = 0;
+            int chLast = 0;
+            for (int i = 0; i < 10; i++) {
+                if (i == 0){
+                    ch = i;
+                    chLast = i;
+                    labelStartAddress.get(i).setText("null; " + specialDeque.getIndex(ch).hashCode()
+                            + "; " + specialDeque.getIndex(ch+1).hashCode()
+                            + ";" );
+                }
+                else {
+                    ch = i;
+                    chLast = i;
+                    labelStartAddress.get(i).setText( specialDeque.getIndex(ch-1).hashCode() + "; "
+                            + specialDeque.getIndex(ch).hashCode()
+                            + "; " + specialDeque.getIndex(chLast+1).hashCode()
+                            + ";" );
+                }
+            }
+
+            for (int i = 0; i < 10; i++) {
+                if (i == 0){
+                    ch = i;
+                    chLast = i;
+                    labelLastAddress.get(i).setText(lastElements.get(ch + 1).hashCode()
+                            + "; " + lastElements.get(ch).hashCode() + "; null;");
+                }
+                else {
+                    ch = i;
+                    chLast = i;
+                    if (i == 9){
+                        labelLastAddress.get(i).setText(lastElements.get(ch + 1).hashCode()
+                                + "; " + lastElements.get(ch).hashCode() + "; " + lastElements.get(chLast - 1) + ";");
+                    }else{
+                        labelLastAddress.get(i).setText(lastElements.get(ch + 1).hashCode() + "; "
+                                + lastElements.get(ch).hashCode()
+                                + "; " + lastElements.get(chLast - 1).hashCode()
+                                + ";" );
+                    }
+
+
                 }
             }
         });
@@ -208,17 +384,53 @@ public class Controller {
             removeLabel.setText(specialDeque.popFirst());
             for (int i = 0; i < 10; i++) {
                 labels.get(i).setText(specialDeque.getIndex(i));
-                if (i < 2){
-                    labelStart.get(i).setText(Integer.toHexString(Integer.parseInt(specialDeque.getIndex(i))));
-                }
             }
-            for (int i = specialDeque.size() - 1, j = 0; i >= specialDeque.size() - 10 ; i--, j++) {
+            for (int i = specialDeque.size() - 1, j = 0; i >= specialDeque.size() - 11; i--, j++) {
                 lastElements.add(j, specialDeque.getIndex(i));
             }
             for (int i = 0; i < 10; i++) {
                 labelsLast.get(i).setText(lastElements.get(i));
-                if (i < 2){
-                    labelLast.get(i).setText(Integer.toHexString(Integer.parseInt(lastElements.get(i))));
+            }
+            int ch = 0;
+            int chLast = 0;
+            for (int i = 0; i < 10; i++) {
+                if (i == 0){
+                    ch = i;
+                    chLast = i;
+                    labelStartAddress.get(i).setText("null; " + specialDeque.getIndex(ch).hashCode()
+                            + "; " + specialDeque.getIndex(ch+1).hashCode()
+                            + ";" );
+                }
+                else {
+                    ch = i;
+                    chLast = i;
+                    labelStartAddress.get(i).setText( specialDeque.getIndex(ch-1).hashCode() + "; "
+                            + specialDeque.getIndex(ch).hashCode()
+                            + "; " + specialDeque.getIndex(chLast+1).hashCode()
+                            + ";" );
+                }
+            }
+
+            for (int i = 0; i < 10; i++) {
+                if (i == 0){
+                    ch = i;
+                    chLast = i;
+                    labelLastAddress.get(i).setText(lastElements.get(ch + 1).hashCode()
+                            + "; " + lastElements.get(ch).hashCode() + "; null;");
+                }
+                else {
+                    ch = i;
+                    chLast = i;
+                    if (i == 9){
+                        labelLastAddress.get(i).setText(lastElements.get(ch + 1).hashCode()
+                                + "; " + lastElements.get(ch).hashCode() + "; " + lastElements.get(chLast - 1) + ";");
+                    }else{
+                        labelLastAddress.get(i).setText(lastElements.get(ch + 1).hashCode() + "; "
+                                + lastElements.get(ch).hashCode()
+                                + "; " + lastElements.get(chLast - 1).hashCode()
+                                + ";" );
+                    }
+
 
                 }
             }
@@ -228,17 +440,53 @@ public class Controller {
             removeLabel.setText(specialDeque.popLast());
             for (int i = 0; i < 10; i++) {
                 labels.get(i).setText(specialDeque.getIndex(i));
-                if (i < 2){
-                    labelStart.get(i).setText(Integer.toHexString(Integer.parseInt(specialDeque.getIndex(i))));
-                }
             }
-            for (int i = specialDeque.size() - 1, j = 0; i >= specialDeque.size() - 10 ; i--, j++) {
+            for (int i = specialDeque.size() - 1, j = 0; i >= specialDeque.size() - 11; i--, j++) {
                 lastElements.add(j, specialDeque.getIndex(i));
             }
             for (int i = 0; i < 10; i++) {
                 labelsLast.get(i).setText(lastElements.get(i));
-                if (i < 2){
-                    labelLast.get(i).setText(Integer.toHexString(Integer.parseInt(lastElements.get(i))));
+            }
+            int ch = 0;
+            int chLast = 0;
+            for (int i = 0; i < 10; i++) {
+                if (i == 0){
+                    ch = i;
+                    chLast = i;
+                    labelStartAddress.get(i).setText("null; " + specialDeque.getIndex(ch).hashCode()
+                            + "; " + specialDeque.getIndex(ch+1).hashCode()
+                            + ";" );
+                }
+                else {
+                    ch = i;
+                    chLast = i;
+                    labelStartAddress.get(i).setText( specialDeque.getIndex(ch-1).hashCode() + "; "
+                            + specialDeque.getIndex(ch).hashCode()
+                            + "; " + specialDeque.getIndex(chLast+1).hashCode()
+                            + ";" );
+                }
+            }
+
+            for (int i = 0; i < 10; i++) {
+                if (i == 0){
+                    ch = i;
+                    chLast = i;
+                    labelLastAddress.get(i).setText(lastElements.get(ch + 1).hashCode()
+                            + "; " + lastElements.get(ch).hashCode() + "; null;");
+                }
+                else {
+                    ch = i;
+                    chLast = i;
+                    if (i == 9){
+                        labelLastAddress.get(i).setText(lastElements.get(ch + 1).hashCode()
+                                + "; " + lastElements.get(ch).hashCode() + "; " + lastElements.get(chLast - 1) + ";");
+                    }else{
+                        labelLastAddress.get(i).setText(lastElements.get(ch + 1).hashCode() + "; "
+                                + lastElements.get(ch).hashCode()
+                                + "; " + lastElements.get(chLast - 1).hashCode()
+                                + ";" );
+                    }
+
 
                 }
             }

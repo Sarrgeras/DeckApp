@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="796.0" prefWidth="1289.0" style="-fx-background-color: #2E3348;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.deckapp.Controller">
     <children>
-        <AnchorPane layoutX="8.0" layoutY="103.0" prefHeight="701.0" prefWidth="1280.0" style="-fx-background-color: #FFFACD;">
+        <AnchorPane layoutX="5.0" layoutY="104.0" prefHeight="701.0" prefWidth="1280.0" style="-fx-background-color: #FFFACD;">
             <children>
                 <Label fx:id="addLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="264.0" layoutY="618.0" lineSpacing="1.0" prefHeight="36.0" prefWidth="145.0" style="-fx-border-radius: 10; -fx-background-color: #9ACD32; -fx-border-style: solid; -fx-background-radius: 10;" text="0" textAlignment="CENTER" textFill="LEMONCHIFFON" textOverrun="CENTER_ELLIPSIS">
                     <font>
@@ -26,7 +26,7 @@
                         <Font name="Consolas Bold" size="20.0" />
                     </font>
                 </Label>
-                <Label alignment="CENTER" layoutX="492.0" layoutY="288.0" prefHeight="36.0" prefWidth="323.0" text="Начало Дека: " textAlignment="CENTER" textFill="#739326">
+                <Label alignment="CENTER" layoutX="492.0" layoutY="233.0" prefHeight="36.0" prefWidth="323.0" text="Начало Дека: " textAlignment="CENTER" textFill="#739326">
                     <font>
                         <Font name="Consolas Bold" size="30.0" />
                     </font>
@@ -179,14 +179,115 @@
                         </Button>
                     </children>
                 </HBox>
-            <Label layoutX="24.0" layoutY="271.0" prefHeight="17.0" prefWidth="155.0" text="Индекс текущего элемента:" />
-            <Label layoutX="200.0" layoutY="271.0" prefHeight="17.0" prefWidth="180.0" text="Индекс следующего элемента:" />
-            <Label layoutX="1073.0" layoutY="478.0" prefHeight="17.0" prefWidth="155.0" text="Индекс текущего элемента:" />
-            <Label layoutX="887.0" layoutY="478.0" prefHeight="17.0" prefWidth="180.0" text="Индекс следующего элемента:" />
-            <Label fx:id="indexNowStart" layoutX="88.0" layoutY="306.0" />
-            <Label fx:id="indexNextStart" layoutX="276.0" layoutY="306.0" />
-            <Label fx:id="indexNowLast" layoutX="1123.0" layoutY="522.0" />
-            <Label fx:id="indexNextLast" layoutX="956.0" layoutY="522.0" />
+            <Label layoutX="59.0" layoutY="226.0" prefHeight="25.0" prefWidth="323.0" text="Адресса элементов: предыдущий; текущий; следующий;" />
+            <HBox layoutX="129.0" layoutY="300.0" prefHeight="36.0" prefWidth="1049.0">
+               <children>
+                  <Label fx:id="labelStartAddress1" prefHeight="36.0" prefWidth="104.0">
+                     <font>
+                        <Font name="System Bold" size="10.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelStartAddress2" prefHeight="36.0" prefWidth="104.0">
+                     <font>
+                        <Font name="System Bold" size="10.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelStartAddress3" prefHeight="36.0" prefWidth="104.0">
+                     <font>
+                        <Font name="System Bold" size="10.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelStartAddress4" prefHeight="36.0" prefWidth="104.0">
+                     <font>
+                        <Font name="System Bold" size="10.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelStartAddress5" prefHeight="36.0" prefWidth="104.0">
+                     <font>
+                        <Font name="System Bold" size="10.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelStartAddress6" prefHeight="36.0" prefWidth="104.0">
+                     <font>
+                        <Font name="System Bold" size="10.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelStartAddress7" prefHeight="36.0" prefWidth="104.0">
+                     <font>
+                        <Font name="System Bold" size="10.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelStartAddress8" prefHeight="36.0" prefWidth="104.0">
+                     <font>
+                        <Font name="System Bold" size="10.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelStartAddress9" prefHeight="36.0" prefWidth="104.0">
+                     <font>
+                        <Font name="System Bold" size="10.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelStartAddress10" prefHeight="36.0" prefWidth="104.0">
+                     <font>
+                        <Font name="System Bold" size="10.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox layoutX="129.0" layoutY="467.0" prefHeight="36.0" prefWidth="1049.0">
+               <children>
+                  <Label fx:id="labelLastAddress1" prefHeight="36.0" prefWidth="104.0">
+                     <font>
+                        <Font name="System Bold" size="10.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelLastAddress2" prefHeight="36.0" prefWidth="104.0">
+                     <font>
+                        <Font name="System Bold" size="10.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelLastAddress3" prefHeight="36.0" prefWidth="104.0">
+                     <font>
+                        <Font name="System Bold" size="10.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelLastAddress4" prefHeight="36.0" prefWidth="104.0">
+                     <font>
+                        <Font name="System Bold" size="10.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelLastAddress5" prefHeight="36.0" prefWidth="104.0">
+                     <font>
+                        <Font name="System Bold" size="10.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelLastAddress6" prefHeight="36.0" prefWidth="104.0">
+                     <font>
+                        <Font name="System Bold" size="10.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelLastAddress7" prefHeight="36.0" prefWidth="104.0">
+                     <font>
+                        <Font name="System Bold" size="10.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelLastAddress8" prefHeight="36.0" prefWidth="104.0">
+                     <font>
+                        <Font name="System Bold" size="10.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelLastAddress9" prefHeight="36.0" prefWidth="104.0">
+                     <font>
+                        <Font name="System Bold" size="10.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelLastAddress10" prefHeight="36.0" prefWidth="104.0">
+                     <font>
+                        <Font name="System Bold" size="10.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
             </children>
         </AnchorPane>
         <Label contentDisplay="CENTER" layoutX="410.0" layoutY="25.0" prefHeight="51.0" prefWidth="477.0" text="Реализация дека" textFill="WHITE">
